@@ -38,7 +38,7 @@ type ArenaForm = {
 const INITIAL_FORM: ArenaForm = {
   judgeApiKey: "",
   judgeModel: "gpt-4.1-mini",
-  judgeSystemPrompt: "You are a strict evaluator focused on math accuracy.",
+  judgeSystemPrompt: "You are a strict evaluator. Generate one challenging task and score both answers fairly.",
   agent1ApiKey: "",
   agent1Model: "gpt-4.1-mini",
   agent1SystemPrompt: "You are a precise and methodical math expert.",

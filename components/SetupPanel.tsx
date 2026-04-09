@@ -68,7 +68,7 @@ export default function SetupPanel({ form, disabled, onChange, onRun }: SetupPan
             disabled={disabled}
             rows={3}
             className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none ring-accent focus:ring"
-            placeholder="You are a strict math judging agent..."
+            placeholder="You are a strict evaluator for marketing copy..."
           />
         </div>
 

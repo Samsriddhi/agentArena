@@ -95,11 +95,15 @@ export async function runAgent(agent: AgentConfig, input: string): Promise<strin
 }
 
 export async function generateQuestion(judge: JudgeConfig): Promise<string> {
+  const judgeInstructions =
+    judge.systemPrompt?.trim() ||
+    "You are a strict evaluator. Generate one challenging task and then evaluate two answers.";
+
   return callLLM({
     apiKey: judge.apiKey,
     model: judge.model,
-    system: "You are a math question generator.",
-    user: "Generate ONE challenging math problem. No explanation."
+    system: judgeInstructions,
+    user: "Generate ONE challenging task or question for this arena. No explanation."
   });
 }
 
@@ -109,15 +113,18 @@ export async function evaluate(
   res1: string,
   res2: string
 ): Promise<EvaluationResult> {
+  const judgeInstructions =
+    judge.systemPrompt?.trim() || "You are a strict evaluator.";
+
   const evaluationText = await callLLM({
     apiKey: judge.apiKey,
     model: judge.model,
-    system: judge.systemPrompt?.trim() || "You are a strict evaluator.",
+    system: judgeInstructions,
     user: [
-      "Evaluate these two answers to the same math problem.",
+      "Evaluate these two answers to the same task.",
       "Return STRICT JSON only.",
       "",
-      `Problem: ${prompt}`,
+      `Task: ${prompt}`,
       "",
       `Answer A: ${res1}`,
       "",
