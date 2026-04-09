@@ -1,6 +1,6 @@
-# Agent Playoff / Oneoff Overall
+# Agent Playoff
 
-Agent Playoff / Oneoff Overall is a Next.js MVP that compares two LLM agents using a judge LLM over multiple rounds.
+Agent Playoff is a Next.js MVP that compares two LLM agents using a judge LLM over multiple rounds.
 
 ## Tech Stack
 
@@ -37,12 +37,18 @@ In the left **Setup** panel on the home page:
 
 All keys are used only during the request lifecycle and are never stored server-side.
 
+Current key integration:
+
+- OpenAI API keys are supported right now.
+- More integrations are coming soon.
+
 ## How to run a comparison
 
 1. Enter judge model and both agent models.
-2. Enter system prompts for Agent 1 and Agent 2.
-3. Enter number of rounds.
-4. Click **Run Test**.
+2. Enter an optional custom judge system prompt.
+3. Enter system prompts for Agent 1 and Agent 2.
+4. Enter number of rounds.
+5. Click **Run Test**.
 
 The app will:
 
@@ -61,7 +67,7 @@ Request body:
 
 ```json
 {
-  "judge": { "apiKey": "string", "model": "string" },
+  "judge": { "apiKey": "string", "model": "string", "systemPrompt": "string" },
   "agent1": { "apiKey": "string", "model": "string", "systemPrompt": "string" },
   "agent2": { "apiKey": "string", "model": "string", "systemPrompt": "string" },
   "config": { "rounds": 3 }

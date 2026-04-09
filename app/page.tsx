@@ -25,6 +25,7 @@ type RunTestResponse = {
 type ArenaForm = {
   judgeApiKey: string;
   judgeModel: string;
+  judgeSystemPrompt: string;
   agent1ApiKey: string;
   agent1Model: string;
   agent1SystemPrompt: string;
@@ -37,6 +38,7 @@ type ArenaForm = {
 const INITIAL_FORM: ArenaForm = {
   judgeApiKey: "",
   judgeModel: "gpt-4.1-mini",
+  judgeSystemPrompt: "You are a strict evaluator focused on math accuracy.",
   agent1ApiKey: "",
   agent1Model: "gpt-4.1-mini",
   agent1SystemPrompt: "You are a precise and methodical math expert.",
@@ -104,7 +106,8 @@ export default function HomePage() {
           body: JSON.stringify({
             judge: {
               apiKey: form.judgeApiKey,
-              model: form.judgeModel
+              model: form.judgeModel,
+              systemPrompt: form.judgeSystemPrompt
             },
             agent1: {
               apiKey: form.agent1ApiKey,
@@ -152,7 +155,7 @@ export default function HomePage() {
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-6">
       <header className="mb-4">
-        <h1 className="text-2xl font-bold text-ink md:text-3xl">Agent Playoff / Oneoff Overall</h1>
+        <h1 className="text-2xl font-bold text-ink md:text-3xl">Agent Playoff</h1>
         <p className="mt-1 text-sm text-slate-700">
           Compare two LLM agents with automated judging over multiple rounds.
         </p>

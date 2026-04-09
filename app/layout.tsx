@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Playoff / Oneoff Overall",
+  title: "Agent Playoff",
   description: "Compare two LLM agents using a judge LLM."
 };
 

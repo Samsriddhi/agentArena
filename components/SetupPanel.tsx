@@ -3,6 +3,7 @@
 type ArenaForm = {
   judgeApiKey: string;
   judgeModel: string;
+  judgeSystemPrompt: string;
   agent1ApiKey: string;
   agent1Model: string;
   agent1SystemPrompt: string;
@@ -30,6 +31,9 @@ export default function SetupPanel({ form, disabled, onChange, onRun }: SetupPan
       <p className="mt-1 text-sm text-slate-600">
         Configure judge and both agents, then run the arena.
       </p>
+      <p className="mt-2 rounded-md border border-sky-200 bg-sky-50 px-3 py-2 text-xs text-sky-800">
+        API key support right now: OpenAI keys. More integrations coming soon.
+      </p>
 
       <div className="mt-4 space-y-4">
         <div>
@@ -53,6 +57,18 @@ export default function SetupPanel({ form, disabled, onChange, onRun }: SetupPan
             disabled={disabled}
             className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none ring-accent focus:ring"
             placeholder="gpt-4.1-mini"
+          />
+        </div>
+
+        <div>
+          <InputLabel text="Judge System Prompt" />
+          <textarea
+            value={form.judgeSystemPrompt}
+            onChange={(e) => onChange("judgeSystemPrompt", e.target.value)}
+            disabled={disabled}
+            rows={3}
+            className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none ring-accent focus:ring"
+            placeholder="You are a strict math judging agent..."
           />
         </div>
 

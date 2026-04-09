@@ -3,6 +3,7 @@ import { callLLM } from "@/lib/llm";
 export type JudgeConfig = {
   apiKey: string;
   model: string;
+  systemPrompt?: string;
 };
 
 export type AgentConfig = {
@@ -111,7 +112,7 @@ export async function evaluate(
   const evaluationText = await callLLM({
     apiKey: judge.apiKey,
     model: judge.model,
-    system: "You are a strict evaluator.",
+    system: judge.systemPrompt?.trim() || "You are a strict evaluator.",
     user: [
       "Evaluate these two answers to the same math problem.",
       "Return STRICT JSON only.",
@@ -148,7 +149,8 @@ function validateRequestBody(input: RunTestRequest): RunTestRequest {
   return {
     judge: {
       apiKey: input.judge.apiKey.trim(),
-      model: input.judge.model.trim()
+      model: input.judge.model.trim(),
+      systemPrompt: input.judge.systemPrompt ?? ""
     },
     agent1: {
       apiKey: input.agent1.apiKey.trim(),
