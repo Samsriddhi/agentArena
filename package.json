@@ -1,0 +1,33 @@
+{
+  "name": "llm-agent-arena",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "katex": "^0.16.45",
+    "next": "^16.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-markdown": "9.0.1",
+    "rehype-katex": "7.0.1",
+    "remark-gfm": "4.0.0",
+    "remark-math": "6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.19",
+    "es-abstract": "1.23.3",
+    "eslint": "8.57.0",
+    "eslint-config-next": "^16.2.3",
+    "postcss": "8.4.39",
+    "tailwindcss": "3.4.7",
+    "typescript": "5.5.4"
+  }
+}
